@@ -1,47 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/app/entry.adapt.jsx",
-      "use": "@vercel/analytics",
-      "config": {
-        "imageOptimizer": {
-          "optimizeSharpness": true
-        }
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "src/app/api/$1"
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "src/app/$1"
+      "dest": "/$1"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "origin-when-cross-origin"
-        }
-      ]
-    }
-  ],
-  "env": {
-    AUTH_SECRET: process.env.AUTH_SECRET,
-    DATABASE_URL: process.env.DATABASE_URL
-  }
+  ]
 }
