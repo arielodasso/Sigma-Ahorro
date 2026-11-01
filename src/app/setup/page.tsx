@@ -36,58 +36,61 @@ export default function SetupPage() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background/80 p-6">
-      <div className="bg-white/90 rounded-xl p-8 shadow-xl max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center">Crear cuenta propietaria</h2>
-        <p className="text-gray-600 text-center mb-8">
+    <section className="min-h-screen flex items-center justify-center bg-background p-6">
+      <div className="bg-card text-card-foreground rounded-xl p-8 shadow-lg border border-border max-w-md w-full">
+        <h1 className="text-2xl font-bold mb-2 text-center">Crear cuenta propietaria</h1>
+        <p className="text-muted-foreground text-center mb-6">
           Completa los siguientes datos para crear tu cuenta. Esta será la única cuenta propietaria.
         </p>
         {error && (
-          <div className="mb-4 p-3 rounded bg-red-100 text-red-800 text-sm">
+          <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive border border-destructive/20 text-sm">
             {error}
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2">Nombre</label>
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Nombre</label>
             <input
+              id="name"
               type="text"
               name="name"
               required
               value={name}
-              onChange={(e) => setName(e.target.value as string)}
-              className="w-full rounded border px-3 py-2 focus:ring-primary focus:border-outline"
+              onChange={(e) => setName(e.target.value)}
+              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               placeholder="Tu nombre"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email</label>
             <input
+              id="email"
               type="email"
               name="email"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value as string)}
-              className="w-full rounded border px-3 py-2 focus:ring-primary focus:border-outline"
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               placeholder="ejemplo@dominio.com"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2">Contraseña</label>
+            <label htmlFor="password" className="block text-sm font-medium mb-2 text-foreground">Contraseña</label>
             <input
+              id="password"
               type="password"
               name="password"
               required
               minLength={10}
               value={password}
-              onChange={(e) => setPassword(e.target.value as string)}
-              className="w-full rounded border px-3 py-2 focus:ring-primary focus:border-outline"
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               placeholder="Mínimo 10 caracteres"
             />
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 transition font-medium"
+            className="w-full px-4 py-2.5 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition font-medium focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           >
             Crear cuenta
           </button>
