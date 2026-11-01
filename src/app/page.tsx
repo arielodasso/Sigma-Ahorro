@@ -12,8 +12,8 @@ export default async function Home() {
     if (userCount === 0) {
       redirect("/setup");
     }
+    redirect("/dashboard");
   } catch {
-    // Base de datos no inicializada aún; continuar.
+    redirect("/setup");
   }
-  return null;
 }
