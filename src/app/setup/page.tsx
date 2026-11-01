@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function SetupPage() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,19 +14,19 @@ export default function SetupPage() {
     e.preventDefault();
     try {
       const form = new FormData(e.target as HTMLFormElement);
-      const name = form.get("name") as string;
-      const email = form.get("email") as string;
-      const password = form.get("password") as string;
+      const nameVal = form.get("name") as string;
+      const emailVal = form.get("email") as string;
+      const passwordVal = form.get("password") as string;
       
-      // Import server action
       const result = await fetch("/api/setup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name: nameVal, email: emailVal, password: passwordVal }),
       }).then((r) => r.json());
       
       if (result.success) {
-        redirect("/");
+        router.push("/");
+        router.refresh();
       } else {
         setError(result.error || "Error desconocido");
       }
