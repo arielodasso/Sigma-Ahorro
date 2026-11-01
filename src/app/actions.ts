@@ -32,7 +32,7 @@ export async function setupOwner(name: string, email: string, password: string):
     name.trim(),
     now,
   ]);
-  await db.run("INSERT INTO user_preferences (user_id, locale, timezone, primary_currency, theme, date_format, number_format, budget_thresholds, notifications, biometric_enabled, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
+  await db.run("INSERT INTO user_preferences (user_id, locale, timezone, primary_currency, theme, date_format, number_format, budget_thresholds, notifications, biometric_enabled, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
     id,
     "es-AR",
     "America/Argentina/Buenos_Aires",
@@ -43,6 +43,7 @@ export async function setupOwner(name: string, email: string, password: string):
     JSON.stringify([50, 75, 90, 100]),
     JSON.stringify({ budgets: true, duePayments: true, debts: true, goals: true, recurring: true }),
     0,
+    now,
     now,
   ]);
   return { success: true };
