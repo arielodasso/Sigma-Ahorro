@@ -175,7 +175,7 @@ export async function createDatabase(): Promise<DatabaseBundle> {
     return { db, close: () => db.close() };
   }
 
-  const filePath = process.env.SQLITE_PATH?.trim() || path.join(process.cwd(), ".data", "sigma-ahorro.db");
+  const filePath = process.env.SQLITE_PATH?.trim() || path.join(process.env.TMPDIR || "/tmp", "sigma-ahorro.db");
   const db = createSqliteDatabase(filePath);
   await seedCurrencies(db);
   return { db, close: () => db.close() };
