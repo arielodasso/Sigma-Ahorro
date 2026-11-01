@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/session";
 import { listBudgetViews } from "@/services/budgets";
 import { listGoalViews } from "@/services/goals";
@@ -9,8 +8,9 @@ import { listScheduled } from "@/services/scheduled";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
+
   if (!user) {
-    notFound();
+    return <p className="text-center text-muted-foreground mt-16">Creá tu cuenta para ver el dashboard</p>;
   }
 
   const [budgets, goals, debts, transactions, recurring, scheduled] = await Promise.all([
