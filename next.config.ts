@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
-  // @ts-ignore
-  darkMode: "class",
 };
+
 
 export default nextConfig;
