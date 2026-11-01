@@ -10,7 +10,7 @@ export default async function DashboardPage() {
   const user = await getCurrentUser();
 
   if (!user) {
-    return <p className="text-center text-muted-foreground mt-16">Creá tu cuenta para ver el dashboard</p>;
+    return <p className="text-center text-muted-foreground mt-16">Tu cuenta fue creada en esta sesión. ¡Comienza a agregar tus presupuestos, metas y transacciones!</p>;
   }
 
   const [budgets, goals, debts, transactions, recurring, scheduled] = await Promise.all([

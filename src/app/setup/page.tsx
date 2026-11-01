@@ -25,6 +25,10 @@ export default function SetupPage() {
       }).then((r) => r.json());
       
       if (result.success) {
+        // Mark onboarding as completed so home page redirects to dashboard
+        if (typeof window !== "undefined") {
+          localStorage.setItem("sigma-onboarding-completed", "1");
+        }
         router.push("/");
         router.refresh();
       } else {
