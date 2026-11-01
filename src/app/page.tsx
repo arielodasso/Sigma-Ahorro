@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import { countUsers } from "./actions";
 
 export const metadata = {
   title: "Sigma Ahorro",
@@ -7,13 +6,5 @@ export const metadata = {
 };
 
 export default async function Home() {
-  try {
-    const userCount = await countUsers();
-    if (userCount === 0) {
-      redirect("/setup");
-    }
-    redirect("/dashboard");
-  } catch {
-    redirect("/setup");
-  }
+  redirect("/dashboard");
 }
